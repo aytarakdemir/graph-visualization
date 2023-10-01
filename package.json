@@ -1,0 +1,25 @@
+{
+  "name": "graphvis",
+  "version": "1.0.0",
+  "description": "Graph visualization",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aytarakdemir/graph-visualization.git"
+  },
+  "keywords": [
+    "graph"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aytarakdemir/graph-visualization/issues"
+  },
+  "homepage": "https://github.com/aytarakdemir/graph-visualization#readme",
+  "dependencies": {
+    "p5": "^1.7.0"
+  }
+}
