@@ -4,7 +4,7 @@
   "description": "Graph visualization",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
@@ -21,5 +21,12 @@
   "homepage": "https://github.com/aytarakdemir/graph-visualization#readme",
   "dependencies": {
     "p5": "^1.7.0"
+  },
+  "devDependencies": {
+    "@types/p5": "^1.7.0",
+    "ts-loader": "^9.4.4",
+    "typescript": "^5.2.2",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
   }
 }
