@@ -4,6 +4,8 @@ import { Vertex } from './models/vertex';
 import { Draw } from './draw';
 
 let clickedVertex: Vertex = null;
+let hookesLawActive = true;
+let coulombsLawActive = true;
 
 // ONE EXAMPLE
 export const graph = new Graph;
@@ -18,10 +20,13 @@ graph.vertices = [
 
 graph.edges = [[graph.vertices[0], graph.vertices[2]], [graph.vertices[0], graph.vertices[1]]]
 
-
 const sketch = (p: p5) => {
+    
+    const canvasWidth : number = p.windowWidth * 0.9;
+    const canvasHeight : number = p.windowHeight * 0.9;
+
     p.setup = () => {
-        p.createCanvas(p.windowWidth, p.windowHeight - 10);
+        p.createCanvas(canvasWidth, canvasHeight);
         p.strokeWeight(2);
         p.frameRate(60);
     };
@@ -29,27 +34,38 @@ const sketch = (p: p5) => {
     p.draw = () => {
         p.clear(0,0,0,0);
         p.background(220);
+        Draw.drawEdges(graph.edges, p)
         Draw.drawVertices(graph.vertices, p);
+
+        if(hookesLawActive) // run func hookesLaw;
+        if(coulombsLawActive) // run func coulombLaw;
+
+        graph.vertices.forEach(vertex => {
+            vertex.handleMovement(p.mouseX, p.mouseY, canvasWidth, canvasHeight);
+        });
         
+
     };
 
     p.mousePressed = () => {
         graph.vertices.forEach(vertex => {
             if(vertex.isPressed(p.mouseX, p.mouseY)) {
                 clickedVertex = vertex;
+                clickedVertex.dragging = true;
             }            
         });
     };
 
     p.mouseReleased = () => {
+        clickedVertex.dragging = false;
         clickedVertex = null;
     }
 
-    p.mouseDragged = () => {
+    /* p.mouseDragged = () => {
         if (clickedVertex) {
-            clickedVertex.moveVertex(p.mouseX, p.mouseY);
+            clickedVertex.dragging = true;
         }
-    }
+    } */
 };
 
 new p5(sketch);

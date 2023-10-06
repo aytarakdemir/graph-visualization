@@ -7,6 +7,5 @@ export class Graph {
     edges: [Vertex,Vertex][];
     
     constructor(vertices: Vertex[] = []) {}
-
-
+    
 }
