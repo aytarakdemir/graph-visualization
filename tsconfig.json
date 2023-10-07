@@ -1,12 +1,14 @@
 {
     "compilerOptions": {
-        "outDir": "./dist/",
-        "sourceMap": true,
-        "module": "ES6",
-        "target": "ES5",
+        "target": "es5",
+        "module": "commonjs",
+        "strict": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
         "moduleResolution": "node",
-        "allowSyntheticDefaultImports": true
-    },
+        "outDir": "dist",
+        "sourceMap": true    
+      },
     "include": [
         "./src/**/*" // adjust path accordingly
     ]

@@ -3,7 +3,7 @@ import { Graph } from './models/graph';
 import { Vertex } from './models/vertex';
 import { Draw } from './draw';
 
-let clickedVertex: Vertex = null;
+let clickedVertex: Vertex | null = null;
 let hookesLawActive = true;
 let coulombsLawActive = true;
 
@@ -57,7 +57,6 @@ const sketch = (p: p5) => {
     };
 
     p.mouseReleased = () => {
-        clickedVertex.dragging = false;
         clickedVertex = null;
     }
 

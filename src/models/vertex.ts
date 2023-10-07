@@ -6,8 +6,8 @@ export class Vertex {
     label: string;
     dragging: boolean;
 
-    private xDiff: number;
-    private yDiff: number;
+    private xDiff!: number;
+    private yDiff!: number;
 
     constructor(x = 10, y = 10, radius = 10, label?:string) {
         this.x = x;
@@ -36,7 +36,7 @@ export class Vertex {
         if(targetY <= canvasHeight) this.y = targetY;
     }
 
-    handleMovement(mouseX: number, mouseY: number, canvasWidth?: number, canvasHeight?: number,
+    handleMovement(mouseX: number, mouseY: number, canvasWidth: number = 500, canvasHeight: number = 500,
          hookesLawActive?: boolean, coulombsLawActive?: boolean): void {
         
         if(this.dragging){
