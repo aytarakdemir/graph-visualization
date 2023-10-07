@@ -1,15 +1,15 @@
 {
     "compilerOptions": {
-        "target": "es5",
-        "module": "commonjs",
-        "strict": true,
-        "esModuleInterop": true,
-        "forceConsistentCasingInFileNames": true,
-        "moduleResolution": "node",
-        "outDir": "dist",
-        "sourceMap": true    
-      },
-    "include": [
-        "./src/**/*" // adjust path accordingly
-    ]
+      "module": "commonjs",
+      "noImplicitAny": true,
+      "removeComments": true,
+      "preserveConstEnums": true,
+      "sourceMap": true,
+      "declaration": true,
+      "moduleResolution": "node",
+      "outDir": "./dist",
+      "esModuleInterop": true,
+      "rootDir": "."
+    },
+    "include": ["src"]
 }
