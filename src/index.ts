@@ -8,16 +8,24 @@ import { Physics } from './physics';
 let clickedVertex: Vertex | null = null;
 
 // Hookes Law Parameters
-let hookesLawActive = true;
+const hookesLawCheckbox = <HTMLInputElement>document.getElementById("hookesLaw");
+hookesLawCheckbox.addEventListener('change', onHookesLawChange);
+let hookesLawActive : boolean = hookesLawCheckbox.checked;
 const spring_constant: number = 0.01;
 const spring_length: number = 120;
 
 // Coulomb's Law Parameters
-let coulombsLawActive = true;
+const coulombsLawCheckbox = <HTMLInputElement>document.getElementById("coulombsLaw");
+coulombsLawCheckbox.addEventListener('change', onCoulombsLawChange);
+let coulombsLawActive : boolean = hookesLawCheckbox.checked;
 const coulomb_constant: number = 10000;
 
 // Movement Parameter
 const maxForce: number = 30;
+
+function onHookesLawChange() : void { hookesLawActive = hookesLawCheckbox.checked; }
+function onCoulombsLawChange() : void { coulombsLawActive = coulombsLawCheckbox.checked; }
+
 
 // ONE EXAMPLE
 export const graph = new Graph;
@@ -49,6 +57,7 @@ const sketch = (p: p5) => {
     };
     
     p.draw = () => {
+        // Do we need to get values from html at every draw?
         p.clear(0,0,0,0);
         p.background(230);
 
