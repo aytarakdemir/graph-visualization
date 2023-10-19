@@ -61,8 +61,8 @@ export class Vertex {
                 // scale down to max force
                 const force_sq: number = this.force_x ** 2 + this.force_y ** 2;
                 if(force_sq > maxForce ** 2){
-                    this.force_x *= (maxForce / force_sq);
-                    this.force_y *= (maxForce / force_sq);
+                    this.force_x *= (maxForce / Math.sqrt(force_sq));
+                    this.force_y *= (maxForce / Math.sqrt(force_sq));
                 }
 
                 // update loc according to force
@@ -72,7 +72,5 @@ export class Vertex {
                 this.force_y = 0;
             }
         }
-
     }
-
 }

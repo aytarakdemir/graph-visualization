@@ -5,8 +5,6 @@ import { Draw } from './draw';
 import { Physics } from './physics';
 
 
-let clickedVertex: Vertex | null = null;
-
 // Hookes Law Parameters
 const hookesLawCheckbox = <HTMLInputElement>document.getElementById("hookesLaw");
 hookesLawCheckbox.addEventListener('change', onHookesLawChange);
@@ -28,7 +26,7 @@ function onCoulombsLawChange() : void { coulombsLawActive = coulombsLawCheckbox.
 
 
 // ONE EXAMPLE
-export const graph = new Graph;
+const graph = new Graph;
 graph.vertices = [
     new Vertex(500,390,20,'a'),
     new Vertex(900,300,15,'b'),
@@ -48,7 +46,7 @@ graph.edges = [
 const sketch = (p: p5) => {
     
     const canvasWidth : number = Math.floor(p.windowWidth * 0.9);
-    const canvasHeight : number = Math.floor(p.windowHeight * 0.9);
+    const canvasHeight : number = Math.floor(p.windowHeight * 0.7);
 
     p.setup = () => {
         p.createCanvas(canvasWidth, canvasHeight);
@@ -82,7 +80,7 @@ const sketch = (p: p5) => {
         });
         
         // Drawing
-        Draw.drawEdges(graph.edges, p)
+        Draw.drawEdges(graph.edges, p);
         Draw.drawVertices(graph.vertices, p);
 
     };
@@ -90,17 +88,15 @@ const sketch = (p: p5) => {
     p.mousePressed = () => {
         graph.vertices.forEach(vertex => {
             if(vertex.isPressed(p.mouseX, p.mouseY)) {
-                clickedVertex = vertex;
-                clickedVertex.dragging = true;
+                vertex.dragging = true;
             }            
         });
     };
 
     p.mouseReleased = () => {
-        if (clickedVertex !== null){
-            clickedVertex.dragging = false;
-            clickedVertex = null;
-        }
+        graph.vertices.forEach(vertex => {
+            vertex.dragging = false;
+        });
     }
 
 };

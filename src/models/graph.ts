@@ -3,9 +3,11 @@ import { Vertex } from "./vertex";
 
 export class Graph {
 
-    vertices!: Vertex[];
-    edges!: [Vertex,Vertex][];
+    edges: [Vertex, Vertex][] = [];
     
-    constructor(vertices: Vertex[] = []) {}
-    
+    constructor(
+        public vertices: Vertex[] = []
+        ) {
+        
+    }
 }
